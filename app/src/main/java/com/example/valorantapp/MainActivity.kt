@@ -10,6 +10,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testing() {
-        print("Hello")
+        print("meow")
     }
 }
