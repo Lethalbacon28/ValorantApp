@@ -7,7 +7,7 @@ import com.example.valorantapp.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class MainActivity : AppCompatActivity() {
+class Valorant : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     companion object {
