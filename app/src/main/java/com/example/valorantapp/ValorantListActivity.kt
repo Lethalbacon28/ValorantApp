@@ -7,7 +7,7 @@ import com.example.valorantapp.databinding.ActivityValorantListBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class ValorantListActivity : AppCompatActivity() {
+class Valorant : AppCompatActivity() {
 
     private lateinit var binding: ActivityValorantListBinding
     private lateinit var valSkins: WeaponSkinData
