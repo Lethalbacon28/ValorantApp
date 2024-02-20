@@ -20,7 +20,7 @@
         android:theme="@style/Theme.ValorantApp"
         tools:targetApi="31">
         <activity
-            android:name=".Valorant"
+            android:name=".ValorantListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

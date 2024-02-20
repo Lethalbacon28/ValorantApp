@@ -3,13 +3,13 @@ package com.example.valorantapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.valorantapp.databinding.ActivityMainBinding
+import com.example.valorantapp.databinding.ActivityValorantListBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class Valorant : AppCompatActivity() {
+class ValorantListActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityValorantListBinding
     private lateinit var valSkins: WeaponSkinData
     companion object {
         const val TAG = "MainActivity"
@@ -17,7 +17,7 @@ class Valorant : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityValorantListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val inputStream = resources.openRawResource(R.raw.skins)
