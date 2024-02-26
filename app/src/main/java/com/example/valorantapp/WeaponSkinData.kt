@@ -5,8 +5,8 @@ import android.widget.VideoView
 
 data class WeaponSkinData(
     val displayName: String,
-    val displayIcon: ImageView,
+    val displayIcon: String,
     val contentTier: ContentTier,
-    val streamedVideo: VideoView,
+    val streamedVideo: String,
     val chromas: Chromas
 )

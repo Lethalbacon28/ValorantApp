@@ -5,7 +5,7 @@ import android.widget.VideoView
 import java.util.UUID
 
 data class Chromas(
-    val uuid: UUID,
-    val displayIcon: ImageView,
-    val streamedVideo: VideoView
+    val uuid: String,
+    val displayIcon: String,
+    val streamedVideo: String
     )

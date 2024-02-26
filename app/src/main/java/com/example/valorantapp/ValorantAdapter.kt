@@ -10,8 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
-class ValorantAdapter(private var skinList: WeaponSkinData) : RecyclerView.Adapter<ValorantAdapter.ViewHolder>() {
+class ValorantAdapter(private var skinList: ValorantSkinList) : RecyclerView.Adapter<ValorantAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val skinName: TextView
         val skinIcon: ImageView
@@ -37,22 +38,26 @@ class ValorantAdapter(private var skinList: WeaponSkinData) : RecyclerView.Adapt
     @SuppressLint("DiscouragedApi", "UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: ValorantAdapter.ViewHolder, position: Int) {
         val context = holder.layout.context
-        holder.skinName.text = skinList.displayName
-        val uri = "@drawable/$image"
-        val imageResource = resources.getIdentifier(uri, null, packageName)
-        val logoDrawable = resources.getDrawable(imageResource, null)
-        holder.skinIcon.setImageDrawable(logoDrawable)
+        val valoSkin = skinList.valorantList[position]
+        holder.skinName.text = valoSkin.displayName
+            // Picasso.with(context).load(skinList.displayIcon).into(imageView)
+        Picasso.get().load(valoSkin.displayIcon).into(holder.skinIcon)
+        Picasso.get().load(valoSkin.contentTier.displayIcon).into(holder.contentTier)
+//        val uri = "@drawable/$image"
+//        val imageResource = resources.getIdentifier(uri, null, packageName)
+//        val logoDrawable = resources.getDrawable(imageResource, null)
+//        holder.skinIcon.setImageDrawable(logoDrawable)
 
         holder.layout.setOnClickListener {
             val registrationIntent = Intent(context, ValorantDetailActivity::class.java)
             // 2. Optionally add information to send with the intent
-            registrationIntent.putExtra(ValorantDetailActivity.EXTRA_EARTHQUAKE, skinList)
+            registrationIntent.putExtra(ValorantDetailActivity.EXTRA_VALO, valoSkin)
             // 3. launch the new activity using the intent
             context.startActivity(registrationIntent)
-            Toast.makeText(context, "You clicked this ${skinList.displayName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "You clicked this ${valoSkin.displayName}", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    override fun getItemCount() = earthquakeList.features.size
+    override fun getItemCount() = skinList.valorantList.size
 }

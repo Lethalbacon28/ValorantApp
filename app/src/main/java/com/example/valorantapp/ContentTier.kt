@@ -5,6 +5,6 @@ import java.util.UUID
 
 data class ContentTier(
     val displayName: String,
-    val displayIcon: ImageView,
-    val uuid: UUID
+    val displayIcon: String,
+    val uuid: String
     )
