@@ -12,6 +12,7 @@ import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Collections
 
 
 class ValorantListActivity : AppCompatActivity() {
@@ -54,9 +55,14 @@ class ValorantListActivity : AppCompatActivity() {
                 // don't forget a null check before trying to use the data
                 // response.body() contains the object in the<> after Response
                 valSkins = response.body()!!
+
                 if (response.body() == null) {
                     Log.d(TAG, "onResponse: Failed")
                 }
+                valSkins.data = valSkins.data?.filterNot{it?.contentTierUuid == null}
+                valSkins.data = valSkins.data?.filterNot{it?.displayIcon == null}
+                Collections.shuffle(valSkins.data)
+               // valSkins.data?.shuffle()
                 refreshList()
                 Log.d(ContentValues.TAG, "onResponse: ${response.body()}")
             }
