@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ValorantSkinList(
-    var valorantList: List<WeaponSkinData>
+data class Data(
+    var data: List<ValorantSkin?>? = null
 ): Parcelable

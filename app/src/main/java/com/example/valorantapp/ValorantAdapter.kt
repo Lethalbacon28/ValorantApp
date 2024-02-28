@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class ValorantAdapter(private var skinList: ValorantSkinList) : RecyclerView.Adapter<ValorantAdapter.ViewHolder>() {
+class ValorantAdapter(private var skinList: Data) : RecyclerView.Adapter<ValorantAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val skinName: TextView
         val skinIcon: ImageView
@@ -38,11 +38,18 @@ class ValorantAdapter(private var skinList: ValorantSkinList) : RecyclerView.Ada
     @SuppressLint("DiscouragedApi", "UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: ValorantAdapter.ViewHolder, position: Int) {
         val context = holder.layout.context
-        val valoSkin = skinList.valorantList[position]
+        val valoSkin = skinList.data?.get(position)!!
         holder.skinName.text = valoSkin.displayName
             // Picasso.with(context).load(skinList.displayIcon).into(imageView)
         Picasso.get().load(valoSkin.displayIcon).into(holder.skinIcon)
-        Picasso.get().load(valoSkin.contentTier.displayIcon).into(holder.contentTier)
+        when(valoSkin.contentTierUUid){
+            "0cebb8be-46d7-c12a-d306-e9907bfc5a25" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/0cebb8be-46d7-c12a-d306-e9907bfc5a25/displayicon.png").into(holder.contentTier)
+            "e046854e-406c-37f4-6607-19a9ba8426fc" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/e046854e-406c-37f4-6607-19a9ba8426fc/displayicon.png").into(holder.contentTier)
+            "60bca009-4182-7998-dee7-b8a2558dc369" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/60bca009-4182-7998-dee7-b8a2558dc369/displayicon.png").into(holder.contentTier)
+            "12683d76-48d7-84a3-4e09-6985794f0445" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/12683d76-48d7-84a3-4e09-6985794f0445/displayicon.png").into(holder.contentTier)
+            "411e4a55-4e59-7757-41f0-86a53f101bb5" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/411e4a55-4e59-7757-41f0-86a53f101bb5/displayicon.png").into(holder.contentTier)
+        }
+      //  Picasso.get().load(valoSkin.contentTier.displayIcon).into(holder.contentTier)
 //        val uri = "@drawable/$image"
 //        val imageResource = resources.getIdentifier(uri, null, packageName)
 //        val logoDrawable = resources.getDrawable(imageResource, null)
@@ -59,5 +66,5 @@ class ValorantAdapter(private var skinList: ValorantSkinList) : RecyclerView.Ada
 
     }
 
-    override fun getItemCount() = skinList.valorantList.size
+    override fun getItemCount() = skinList.data!!.size
 }
