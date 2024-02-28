@@ -2,6 +2,7 @@ package com.example.valorantapp
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,14 +36,14 @@ class ValorantAdapter(private var skinList: Data) : RecyclerView.Adapter<Valoran
         return ViewHolder(view)
     }
 
-    @SuppressLint("DiscouragedApi", "UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: ValorantAdapter.ViewHolder, position: Int) {
         val context = holder.layout.context
         val valoSkin = skinList.data?.get(position)!!
         holder.skinName.text = valoSkin.displayName
-            // Picasso.with(context).load(skinList.displayIcon).into(imageView)
+        // Picasso.with(context).load(skinList.displayIcon).into(imageView)
         Picasso.get().load(valoSkin.displayIcon).into(holder.skinIcon)
-        when(valoSkin.contentTierUUid){
+        Log.d("Adapter", "${valoSkin}")
+        when(valoSkin.contentTierUuid){
             "0cebb8be-46d7-c12a-d306-e9907bfc5a25" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/0cebb8be-46d7-c12a-d306-e9907bfc5a25/displayicon.png").into(holder.contentTier)
             "e046854e-406c-37f4-6607-19a9ba8426fc" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/e046854e-406c-37f4-6607-19a9ba8426fc/displayicon.png").into(holder.contentTier)
             "60bca009-4182-7998-dee7-b8a2558dc369" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/60bca009-4182-7998-dee7-b8a2558dc369/displayicon.png").into(holder.contentTier)

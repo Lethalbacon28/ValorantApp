@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.valorantapp.databinding.ActivityValorantListBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -25,6 +26,21 @@ class ValorantListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityValorantListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+//        val inputStream = resources.openRawResource(R.raw.skins)
+//        val jsonString = inputStream.bufferedReader().use {
+//            it.readText()
+//        }
+//        Log.d(TAG, "OnCreate: jsonString $jsonString")
+//        val gson = Gson()
+//        val type = object: TypeToken<Data>() {
+//        }.type
+//        valSkins = gson.fromJson(jsonString, type)
+//
+//        Log.d(TAG,"LoadSkins $valSkins")
+
+
         val retrofit = RetrofitHelper.getInstance()
         val valorantService = retrofit.create(ValorantService::class.java)
         val valorantCall = valorantService.getValoSkin()
@@ -38,11 +54,10 @@ class ValorantListActivity : AppCompatActivity() {
                 // don't forget a null check before trying to use the data
                 // response.body() contains the object in the<> after Response
                 valSkins = response.body()!!
-
+                if (response.body() == null) {
+                    Log.d(TAG, "onResponse: Failed")
+                }
                 refreshList()
-
-
-
                 Log.d(ContentValues.TAG, "onResponse: ${response.body()}")
             }
 
@@ -50,22 +65,11 @@ class ValorantListActivity : AppCompatActivity() {
                 Log.d(ContentValues.TAG, "OnFailure ${t.message}")
             }
         })
-
-//        val inputStream = resources.openRawResource(R.raw.skins)
-//        val jsonString = inputStream.bufferedReader().use {
-//            it.readText()
-//        }
-//        Log.d(TAG, "OnCreate: jsonString $jsonString")
-//        val gson = Gson()
-//        val type = object: TypeToken<WeaponSkinData>() {
-//        }.type
-//        valSkins = gson.fromJson(jsonString, type)
-//
-//        Log.d(TAG,"LoadSkins $valSkins")
     }
     fun refreshList() {
         val adapter = ValorantAdapter(valSkins)
-        binding.recyclerViewValorantList.adapter = adapter
+        val recyclerView: RecyclerView = binding.recyclerViewValorantList
         binding.recyclerViewValorantList.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewValorantList.adapter = adapter
     }
 }

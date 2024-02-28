@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class ValorantSkin(
     val displayName: String,
     val displayIcon: String,
-    val contentTierUUid: String,
+    val contentTierUuid: String,
     val streamedVideo: String,
-    val chromas: Chromas
+    val chromas: List<Chromas>
 ): Parcelable
