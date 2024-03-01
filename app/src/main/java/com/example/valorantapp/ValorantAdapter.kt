@@ -64,7 +64,6 @@ class ValorantAdapter(private var skinList: Data) : RecyclerView.Adapter<Valoran
             context.startActivity(registrationIntent)
             Toast.makeText(context, "You clicked this ${valoSkin.displayName}", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun getItemCount() = skinList.data!!.size
