@@ -59,10 +59,12 @@ class ValorantListActivity : AppCompatActivity() {
                 if (response.body() == null) {
                     Log.d(TAG, "onResponse: Failed")
                 }
-                valSkins.data = valSkins.data?.filterNot{it?.contentTierUuid == null}
-                valSkins.data = valSkins.data?.filterNot{it?.displayIcon == null}
+
+                valSkins.data = valSkins.data
+                    ?.filterNot{it?.contentTierUuid == null}
+                    ?.filterNot{it?.displayIcon == null}
                 Collections.shuffle(valSkins.data)
-               // valSkins.data?.shuffle()
+                valSkins.data = valSkins.data?.subList(0,8)
                 refreshList()
                 Log.d(ContentValues.TAG, "onResponse: ${response.body()}")
             }

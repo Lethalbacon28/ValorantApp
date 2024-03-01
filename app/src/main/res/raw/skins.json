@@ -694,36 +694,6 @@
       ]
     },
     {
-      "uuid": "9c134f41-4c29-1bd8-682e-178e7f349c9b",
-      "displayName": "Random Favorite Skin",
-      "themeUuid": "0d7a5bfb-4850-098e-1821-d989bbfd58a8",
-      "contentTierUuid": null,
-      "displayIcon": "https://media.valorant-api.com/weaponskins/9c134f41-4c29-1bd8-682e-178e7f349c9b/displayicon.png",
-      "wallpaper": null,
-      "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/Random/HMG_Random_PrimaryAsset",
-      "chromas": [
-        {
-          "uuid": "647f59fb-41ee-ed30-11f1-52b0814af441",
-          "displayName": "Standard",
-          "displayIcon": null,
-          "fullRender": "https://media.valorant-api.com/weaponskinchromas/647f59fb-41ee-ed30-11f1-52b0814af441/fullrender.png",
-          "swatch": null,
-          "streamedVideo": null,
-          "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/Random/Chromas/Standard/HMG_Random_Standard_PrimaryAsset"
-        }
-      ],
-      "levels": [
-        {
-          "uuid": "a89584fb-451d-fcce-0176-3bbaa6764a2e",
-          "displayName": "Random Favorite Skin",
-          "levelItem": null,
-          "displayIcon": "https://media.valorant-api.com/weaponskinlevels/a89584fb-451d-fcce-0176-3bbaa6764a2e/displayicon.png",
-          "streamedVideo": null,
-          "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/Random/Levels/HMG_Random_Lv1_PrimaryAsset"
-        }
-      ]
-    },
-    {
       "uuid": "3bb7e1cd-4774-3b84-ab13-3fa8ca182f20",
       "displayName": "Orion Odin",
       "themeUuid": "5b8823bc-4419-c40c-7b62-19a3b7affd21",

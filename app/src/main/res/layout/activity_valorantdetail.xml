@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutValorantDetail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ValorantDetailActivity">
+
+    <Button
+        android:id="@+id/button_valorantDetail_chroma4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Chroma 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_valorantDetail_chroma3" />
+
+    <Button
+        android:id="@+id/button_valorantDetail_chroma3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chroma 3"
+        app:layout_constraintBottom_toTopOf="@+id/button_valorantDetail_chroma4"
+        app:layout_constraintEnd_toEndOf="@+id/button_valorantDetail_chroma4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_valorantDetail_chroma4"
+        app:layout_constraintTop_toBottomOf="@+id/button_valorantDetail_chroma2" />
+
+    <Button
+        android:id="@+id/button_valorantDetail_chroma1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chroma 1"
+        app:layout_constraintBottom_toTopOf="@+id/button_valorantDetail_chroma2"
+        app:layout_constraintEnd_toEndOf="@+id/button_valorantDetail_chroma2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_valorantDetail_chroma2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_valorantDetail_skinName" />
+
+    <Button
+        android:id="@+id/button_valorantDetail_chroma2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chroma 2"
+        app:layout_constraintBottom_toTopOf="@+id/button_valorantDetail_chroma3"
+        app:layout_constraintEnd_toEndOf="@+id/button_valorantDetail_chroma3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_valorantDetail_chroma3"
+        app:layout_constraintTop_toBottomOf="@+id/button_valorantDetail_chroma1" />
+
+    <TextView
+        android:id="@+id/textView_valorantDetail_skinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skin Name"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_valorantDetail_chroma1"
+        app:layout_constraintEnd_toEndOf="@+id/button_valorantDetail_chroma1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_valorantDetail_chroma1"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_valorantDetail_icon" />
+
+    <ImageView
+        android:id="@+id/imageView_valorantDetail_icon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_valorantDetail_icon"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_valorantDetail_icon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView_valorantDetail_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageView_valorantDetail_icon"
+        android:layout_width="80dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_valorantDetail_skinName"
+        app:layout_constraintEnd_toEndOf="@+id/textView_valorantDetail_skinName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textView_valorantDetail_skinName"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_valorantDetail_icon2"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>
