@@ -9,5 +9,6 @@ data class ValorantSkin(
     val displayIcon: String,
     val contentTierUuid: String,
     val streamedVideo: String? = "",
-    val chromas: List<Chromas>
+    val chromas: List<Chromas>,
+    val levels: List<Levels>
 ): Parcelable
