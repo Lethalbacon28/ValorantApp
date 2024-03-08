@@ -62,7 +62,7 @@ class ValorantAdapter(private var skinList: Data) : RecyclerView.Adapter<Valoran
             registrationIntent.putExtra(ValorantDetailActivity.EXTRA_VALO, valoSkin)
             // 3. launch the new activity using the intent
             context.startActivity(registrationIntent)
-            Toast.makeText(context, "You clicked this ${valoSkin.displayName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "You clicked ${valoSkin.displayName}", Toast.LENGTH_SHORT).show()
         }
     }
 

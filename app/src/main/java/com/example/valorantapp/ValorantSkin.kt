@@ -11,5 +11,4 @@ data class ValorantSkin(
     val streamedVideo: String? = "",
     val chromas: List<Chromas>,
     val levels: List<Levels>,
-    val fullRender: String? = ""
 ): Parcelable

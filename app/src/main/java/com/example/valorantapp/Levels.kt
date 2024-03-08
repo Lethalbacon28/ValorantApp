@@ -5,5 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Levels(
-    val streamedVideo : String ?= ""
-) : Parcelable
+val streamedVideo: String? = ""
+
+): Parcelable

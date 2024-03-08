@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.MediaController
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.valorantapp.databinding.ActivityValorantChroma2Binding
+import com.example.valorantapp.databinding.ActivityValorantChromaBinding
 
 
 class ValorantChroma : AppCompatActivity() {
@@ -19,11 +19,11 @@ class ValorantChroma : AppCompatActivity() {
         val EXTRA_NUMBER = "number"
     }
 
-    private lateinit var binding: ActivityValorantChroma2Binding
+    private lateinit var binding: ActivityValorantChromaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityValorantChroma2Binding.inflate(layoutInflater)
+        binding = ActivityValorantChromaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val weapon = intent.getParcelableExtra<ValorantSkin>(ValorantDetailActivity.EXTRA_VALO)!!

@@ -64,7 +64,7 @@ class ValorantListActivity : AppCompatActivity() {
                     ?.filterNot{it?.contentTierUuid == null}
                     ?.filterNot{it?.displayIcon == null}
                 Collections.shuffle(valSkins.data)
-                valSkins.data = valSkins.data?.subList(0,8)
+             //   valSkins.data = valSkins.data?.subList(0,8)
                 refreshList()
                 Log.d(ContentValues.TAG, "onResponse: ${response.body()}")
             }
