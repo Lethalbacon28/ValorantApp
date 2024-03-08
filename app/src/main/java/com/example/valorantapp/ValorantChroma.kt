@@ -1,40 +1,49 @@
 package com.example.valorantapp
 
+import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.MediaController
 import android.widget.VideoView
-import androidx.annotation.RequiresApi
-import com.example.valorantapp.databinding.ActivityValorantChromaBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.valorantapp.databinding.ActivityValorantChroma2Binding
+
 
 class ValorantChroma : AppCompatActivity() {
 
-    companion object{
-        const val TAG = "ValorantChrome"
+    companion object {
+        const val TAG = "ValorantChroma"
         val EXTRA_VALO = "valorantSkin"
         val EXTRA_NUMBER = "number"
     }
-    private lateinit var binding: ActivityValorantChromaBinding
+
+    private lateinit var binding: ActivityValorantChroma2Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityValorantChromaBinding.inflate(layoutInflater)
+        binding = ActivityValorantChroma2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val weapon = intent.getParcelableExtra<ValorantSkin>(ValorantDetailActivity.EXTRA_VALO)!!
 
-        val number = intent.getIntExtra(ValorantDetailActivity.EXTRA_NUMBER, -1)
+        val number = intent.getIntExtra(ValorantDetailActivity.EXTRA_NUMBER, -1)!!
 
         Log.d(TAG, "number: $number")
-        val chroma = weapon.levels[number].streamedVideo
+        var chroma = ""
 
-        val videoView : VideoView
+        if (number != 0) {
+            chroma = weapon.chromas[number].streamedVideo.toString()
+        }
+        else {
+            chroma = weapon.levels[weapon.levels.size-1].streamedVideo.toString()
+        }
+
+        val videoView: VideoView
 
         videoView = findViewById(R.id.videoView_valorantChroma_chromaVideo)
-        val uri = Uri.parse(chroma.toString())
+        val uri = Uri.parse(chroma)
 
         // sets the resource from the
         // videoUrl to the videoView

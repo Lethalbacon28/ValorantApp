@@ -9,6 +9,7 @@ import java.util.UUID
 @Parcelize
 data class Chromas(
     val uuid: String,
+    val streamedVideo: String? = "",
     val displayIcon: String? = "",
-    val streamedVideo: String? = ""
+    val fullRender: String? = ""
 ): Parcelable

@@ -23,6 +23,7 @@ class ValorantDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityValorantdetailBinding
     companion object{
         val EXTRA_VALO = "valorantSkin"
+        val EXTRA_NUMBER = "number"
     }
 
     @SuppressLint("DiscouragedApi", "UseCompatLoadingForDrawables")
@@ -34,39 +35,38 @@ class ValorantDetailActivity : AppCompatActivity() {
         val weapon = intent.getParcelableExtra<ValorantSkin>(EXTRA_VALO)!!
         val name = weapon.displayName
         var chromas = weapon.chromas
-        var chroma1 = "No Chroma Available"
-        var chroma2 = "No Chroma Available"
-        var chroma3 = "No Chroma Available"
-        var chroma4 = "No Chroma Available"
-
-//        if (chromas.size > 0) {
-//            chroma1 = "Chroma 1"
-//        }
-//        if (chromas.size > 1) {
-//            chroma2 = "Chroma 2"
-//        }
-//        if (chromas.size > 2) {
-//            chroma3 = "Chroma 3"
-//        }
-//        if (chromas.size > 3) {
-//            chroma4 = "Chroma 4"
-//        }
 
         if(chromas.size >= 1) {
-            Picasso.get().load(weapon.chromas[0].displayIcon).into(binding.imageButtonValorantDetailChroma1)
+            Picasso.get().load(weapon.displayIcon).into(binding.imageButtonValorantDetailChroma1)
         }
         if(chromas.size >= 2){
-            Picasso.get().load(weapon.chromas[1].displayIcon).into(binding.imageButtonValorantDetailChroma2)
+            Picasso.get().load(weapon.chromas[1].fullRender).into(binding.imageButtonValorantDetailChroma2)
         }
         if(chromas.size >= 3){
-            Picasso.get().load(weapon.chromas[2].displayIcon).into(binding.imageButtonValorantDetailChroma3)
+            Picasso.get().load(weapon.chromas[2].fullRender).into(binding.imageButtonValorantDetailChroma3)
         }
         if(chromas.size >= 4){
-            Picasso.get().load(weapon.chromas[3].displayIcon).into(binding.imageButtonValorantDetailChroma4)
+            Picasso.get().load(weapon.chromas[3].fullRender).into(binding.imageButtonValorantDetailChroma4)
         }
         if(chromas.size == 0){
-            Picasso.get().load(weapon.displayIcon).into(binding.imageViewValorantDetailIcon)
+            Picasso.get().load(weapon.chromas[0].fullRender).into(binding.imageViewValorantDetailIcon)
         }
+
+        if (chromas.size > 0 && chromas[0].streamedVideo == null) {
+            if (weapon.levels[weapon.levels.size-1].streamedVideo == null) {
+                binding.imageButtonValorantDetailChroma1.setEnabled(false)
+            }
+        }
+        if (chromas.size > 1 && chromas[1].streamedVideo == null) {
+            binding.imageButtonValorantDetailChroma2.setEnabled(false)
+        }
+        if (chromas.size > 2 && chromas[2].streamedVideo == null) {
+            binding.imageButtonValorantDetailChroma3.setEnabled(false)
+        }
+        if (chromas.size > 3 && chromas[3].streamedVideo == null) {
+            binding.imageButtonValorantDetailChroma4.setEnabled(false)
+        }
+
         binding.textViewValorantDetailSkinName.text = name
 //       Picasso.get().load(weapon.chromas[0].displayIcon).into(binding.imageButtonValorantDetailChroma1)
 //        Picasso.get().load(weapon.chromas[1].displayIcon).into(binding.imageButtonValorantDetailChroma2)
@@ -85,38 +85,42 @@ class ValorantDetailActivity : AppCompatActivity() {
             "12683d76-48d7-84a3-4e09-6985794f0445" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/12683d76-48d7-84a3-4e09-6985794f0445/displayicon.png").into(binding.imageViewValorantDetailIcon)
             "411e4a55-4e59-7757-41f0-86a53f101bb5" -> Picasso.get().load("https://media.valorant-api.com/contenttiers/411e4a55-4e59-7757-41f0-86a53f101bb5/displayicon.png").into(binding.imageViewValorantDetailIcon)
         }
-//
-//        binding.imageButtonValorantDetailChroma1.setOnClickListener {
-//            val registrationIntent = Intent(this, ValorantChroma::class.java)
-//            // 2. Optionally add information to send with the intent
-//            registrationIntent.putExtra(ValorantChroma.EXTRA_VALO, weapon)
-//            // 3. launch the new activity using the intent
-//            this.startActivity(registrationIntent)
-//            Toast.makeText(this, "You clicked Chroma 1", Toast.LENGTH_SHORT).show()
-//        }
-//        binding.buttonValorantDetailChroma2.setOnClickListener {
-//            val registrationIntent = Intent(this, ValorantDetailActivity::class.java)
-//            // 2. Optionally add information to send with the intent
-//            registrationIntent.putExtra(ValorantDetailActivity.EXTRA_VALO, weapon)
-//            // 3. launch the new activity using the intent
-//            this.startActivity(registrationIntent)
-//            Toast.makeText(this, "You clicked Chroma 2", Toast.LENGTH_SHORT).show()
-//        }
-//        binding.buttonValorantDetailChroma3.setOnClickListener {
-//            val registrationIntent = Intent(this, ValorantDetailActivity::class.java)
-//            // 2. Optionally add information to send with the intent
-//            registrationIntent.putExtra(ValorantDetailActivity.EXTRA_VALO, weapon)
-//            // 3. launch the new activity using the intent
-//            this.startActivity(registrationIntent)
-//            Toast.makeText(this, "You clicked Chroma 3", Toast.LENGTH_SHORT).show()
-//        }
-//        binding.buttonValorantDetailChroma4.setOnClickListener {
-//            val registrationIntent = Intent(this, ValorantDetailActivity::class.java)
-//            // 2. Optionally add information to send with the intent
-//            registrationIntent.putExtra(ValorantDetailActivity.EXTRA_VALO, weapon)
-//            // 3. launch the new activity using the intent
-//            this.startActivity(registrationIntent)
-//            Toast.makeText(this, "You clicked Chroma 4", Toast.LENGTH_SHORT).show()
-//        }
+
+        binding.imageButtonValorantDetailChroma1.setOnClickListener {
+            val registrationIntent = Intent(this, ValorantChroma::class.java)
+            // 2. Optionally add information to send with the intent
+            registrationIntent.putExtra(ValorantChroma.EXTRA_VALO, weapon)
+            registrationIntent.putExtra(ValorantChroma.EXTRA_NUMBER, 0)
+            // 3. launch the new activity using the intent
+            this.startActivity(registrationIntent)
+            Toast.makeText(this, "You clicked Chroma 1", Toast.LENGTH_SHORT).show()
+        }
+        binding.imageButtonValorantDetailChroma2.setOnClickListener {
+            val registrationIntent = Intent(this, ValorantChroma::class.java)
+            // 2. Optionally add information to send with the intent
+            registrationIntent.putExtra(ValorantChroma.EXTRA_VALO, weapon)
+            registrationIntent.putExtra(ValorantChroma.EXTRA_NUMBER, 1)
+            // 3. launch the new activity using the intent
+            this.startActivity(registrationIntent)
+            Toast.makeText(this, "You clicked Chroma 2", Toast.LENGTH_SHORT).show()
+        }
+        binding.imageButtonValorantDetailChroma3.setOnClickListener {
+            val registrationIntent = Intent(this, ValorantChroma::class.java)
+            // 2. Optionally add information to send with the intent
+            registrationIntent.putExtra(ValorantChroma.EXTRA_VALO, weapon)
+            registrationIntent.putExtra(ValorantChroma.EXTRA_NUMBER, 2)
+            // 3. launch the new activity using the intent
+            this.startActivity(registrationIntent)
+            Toast.makeText(this, "You clicked Chroma 3", Toast.LENGTH_SHORT).show()
+        }
+        binding.imageButtonValorantDetailChroma4.setOnClickListener {
+            val registrationIntent = Intent(this, ValorantChroma::class.java)
+            // 2. Optionally add information to send with the intent
+            registrationIntent.putExtra(ValorantChroma.EXTRA_VALO, weapon)
+            registrationIntent.putExtra(ValorantChroma.EXTRA_NUMBER, 3)
+            // 3. launch the new activity using the intent
+            this.startActivity(registrationIntent)
+            Toast.makeText(this, "You clicked Chroma 4", Toast.LENGTH_SHORT).show()
+        }
     }
 }
