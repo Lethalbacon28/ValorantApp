@@ -41,15 +41,37 @@ class ValorantDetailActivity : AppCompatActivity() {
         }
         if(chromas.size >= 2){
             Picasso.get().load(weapon.chromas[1].fullRender).into(binding.imageButtonValorantDetailChroma2)
+            if (chromas[1].streamedVideo == null) {
+                binding.textViewValorantDetailText3.text = "No Video"
+            }
+        }
+        else {
+            binding.textViewValorantDetailText3.text = ""
         }
         if(chromas.size >= 3){
             Picasso.get().load(weapon.chromas[2].fullRender).into(binding.imageButtonValorantDetailChroma3)
+            if (chromas[2].streamedVideo == null) {
+                binding.textViewValorantDetailText4.text = "No Video"
+            }
+        }
+        else {
+            binding.textViewValorantDetailText4.text = ""
         }
         if(chromas.size >= 4){
             Picasso.get().load(weapon.chromas[3].fullRender).into(binding.imageButtonValorantDetailChroma4)
+            if (chromas[3].streamedVideo == null) {
+                binding.textViewValorantDetailText5.text = "No Video"
+            }
+        }
+        else {
+            binding.textViewValorantDetailText5.text = ""
         }
         if(chromas.size == 0){
             Picasso.get().load(weapon.chromas[0].fullRender).into(binding.imageViewValorantDetailIcon)
+        }
+
+        if (weapon.levels[0].streamedVideo == null) {
+            binding.textViewValorantDetailText.text = "No Video"
         }
 
         if (chromas.size > 0 && chromas[0].streamedVideo == null) {

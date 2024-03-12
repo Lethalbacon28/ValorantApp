@@ -28,20 +28,6 @@ class ValorantListActivity : AppCompatActivity() {
         binding = ActivityValorantListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-//        val inputStream = resources.openRawResource(R.raw.skins)
-//        val jsonString = inputStream.bufferedReader().use {
-//            it.readText()
-//        }
-//        Log.d(TAG, "OnCreate: jsonString $jsonString")
-//        val gson = Gson()
-//        val type = object: TypeToken<Data>() {
-//        }.type
-//        valSkins = gson.fromJson(jsonString, type)
-//
-//        Log.d(TAG,"LoadSkins $valSkins")
-
-
         val retrofit = RetrofitHelper.getInstance()
         val valorantService = retrofit.create(ValorantService::class.java)
         val valorantCall = valorantService.getValoSkin()
@@ -64,7 +50,7 @@ class ValorantListActivity : AppCompatActivity() {
                     ?.filterNot{it?.contentTierUuid == null}
                     ?.filterNot{it?.displayIcon == null}
                 Collections.shuffle(valSkins.data)
-             //   valSkins.data = valSkins.data?.subList(0,8)
+                valSkins.data = valSkins.data?.subList(0,8)
                 refreshList()
                 Log.d(ContentValues.TAG, "onResponse: ${response.body()}")
             }
